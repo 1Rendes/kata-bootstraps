@@ -8,7 +8,11 @@ describe("MarsRover", () => {
     const expectedComands = [];
     const rover = new Rover();
 
-    const comands = rover.getComands(initialPosition, initialDirection, target);
+    const comands = rover.getDirection(
+      initialPosition,
+      initialDirection,
+      target
+    );
 
     expect(comands).toEqual(expectedComands);
   });
@@ -19,7 +23,11 @@ describe("MarsRover", () => {
     const expectedComands = ["left"];
     const rover = new Rover();
 
-    const comands = rover.getComands(initialPosition, initialDirection, target);
+    const comands = rover.getDirection(
+      initialPosition,
+      initialDirection,
+      target
+    );
 
     expect(comands).toEqual(expectedComands);
   });
@@ -30,7 +38,11 @@ describe("MarsRover", () => {
     const expectedComands = ["right"];
     const rover = new Rover();
 
-    const comands = rover.getComands(initialPosition, initialDirection, target);
+    const comands = rover.getDirection(
+      initialPosition,
+      initialDirection,
+      target
+    );
 
     expect(comands).toEqual(expectedComands);
   });
@@ -41,7 +53,11 @@ describe("MarsRover", () => {
     const expectedComands = ["left", "left"];
     const rover = new Rover();
 
-    const comands = rover.getComands(initialPosition, initialDirection, target);
+    const comands = rover.getDirection(
+      initialPosition,
+      initialDirection,
+      target
+    );
 
     expect(comands).toEqual(expectedComands);
   });
@@ -52,7 +68,11 @@ describe("MarsRover", () => {
     const expectedComands = ["left", "left"];
     const rover = new Rover();
 
-    const comands = rover.getComands(initialPosition, initialDirection, target);
+    const comands = rover.getDirection(
+      initialPosition,
+      initialDirection,
+      target
+    );
 
     expect(comands).toEqual(expectedComands);
   });
@@ -63,7 +83,26 @@ describe("MarsRover", () => {
     const expectedComands = ["right"];
     const rover = new Rover();
 
-    const comands = rover.getComands(initialPosition, initialDirection, target);
+    const comands = rover.getDirection(
+      initialPosition,
+      initialDirection,
+      target
+    );
+
+    expect(comands).toEqual(expectedComands);
+  });
+  it("return 'right' if current direction is E and target is on S", () => {
+    const initialPosition = [0, 5];
+    const initialDirection = "E";
+    const target = [0, 1];
+    const expectedComands = ["right"];
+    const rover = new Rover();
+
+    const comands = rover.getDirection(
+      initialPosition,
+      initialDirection,
+      target
+    );
 
     expect(comands).toEqual(expectedComands);
   });
