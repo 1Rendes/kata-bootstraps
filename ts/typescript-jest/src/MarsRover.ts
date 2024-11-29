@@ -1,5 +1,5 @@
 export class Rover {
-  public turn(initialData) {
-    return [[0, 0], "W"];
+  public getComands(initialData: (string | number[])[]) {
+    return ["left"];
   }
 }
