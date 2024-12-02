@@ -1,4 +1,24 @@
 export class Rover {
+  public getDirection(
+    initialPosition: number[],
+    initialDirection: string,
+    target: number[]
+  ) {
+    const [initX, initY] = initialPosition;
+    const [targetX, targetY] = target;
+    if (initX === targetX && initY === targetY) return [];
+    let currentDirection: string = initialDirection;
+    const directions = ["N", "W", "S", "E"];
+    const currentNumericDirection = directions.indexOf(currentDirection);
+
+    const TargetDirection = this.defineDirectionToTarget(
+      initX,
+      initY,
+      targetX,
+      targetY
+    );
+    return this.defineTurns(TargetDirection, currentNumericDirection);
+  }
   public getMovement(
     initialPosition: number[],
     initialDirection: string,
@@ -16,6 +36,7 @@ export class Rover {
     const [targetX, targetY] = target;
     let currentX = initX;
     let currentY = initY;
+
     let currentDirection = this.defineDirectionToTarget(
       currentX,
       currentY,
@@ -57,26 +78,6 @@ export class Rover {
       }
     }
     return movements;
-  }
-  public getDirection(
-    initialPosition: number[],
-    initialDirection: string,
-    target: number[]
-  ) {
-    const [initX, initY] = initialPosition;
-    const [targetX, targetY] = target;
-    if (initX === targetX && initY === targetY) return [];
-    let currentDirection: string = initialDirection;
-    const directions = ["N", "W", "S", "E"];
-    const currentNumericDirection = directions.indexOf(currentDirection);
-
-    const TargetDirection = this.defineDirectionToTarget(
-      initX,
-      initY,
-      targetX,
-      targetY
-    );
-    return this.defineTurns(TargetDirection, currentNumericDirection);
   }
   private defineTurns(
     TargetDirection: number,
