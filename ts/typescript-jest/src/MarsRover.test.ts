@@ -143,14 +143,44 @@ describe("MarsRover", () => {
 
     expect(comands).toEqual(expectedComands);
   });
-  it("return '2xforward, left, 3xforward' if current direction is E and target is on N", () => {
+  it("return 'right, 4xforward, left, 3xforward' if current direction is N and target is on E", () => {
     const initialPosition = [0, 0];
-    const initialDirection = "E";
-    const target = [2, 3];
+    const initialDirection = "N";
+    const target = [4, 3];
     const expectedComands = [
+      "right",
+      "forward",
+      "forward",
       "forward",
       "forward",
       "left",
+      "forward",
+      "forward",
+      "forward",
+    ];
+    const rover = new Rover();
+
+    const comands = rover.getMovement(
+      initialPosition,
+      initialDirection,
+      target
+    );
+
+    expect(comands).toEqual(expectedComands);
+  });
+  it("return 'right, 4xforward, left, 3xforward' if current direction is E and target is on S", () => {
+    const initialPosition = [5, 5];
+    const initialDirection = "E";
+    const target = [2, 0];
+    const expectedComands = [
+      "left",
+      "left",
+      "forward",
+      "forward",
+      "forward",
+      "left",
+      "forward",
+      "forward",
       "forward",
       "forward",
       "forward",

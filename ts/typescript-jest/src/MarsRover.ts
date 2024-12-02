@@ -10,7 +10,6 @@ export class Rover {
       initialDirection,
       target
     );
-    console.log("directionDefine", directionDefine);
 
     movements = [...directionDefine];
     const [initX, initY] = initialPosition;
@@ -23,51 +22,40 @@ export class Rover {
       targetX,
       targetY
     );
-    console.log("currentDirection", currentDirection);
-
-    for (let positionX = initX + 1; positionX <= targetX; ++positionX) {
-      currentX = positionX;
-      movements.push("forward");
+    if (initX < targetX) {
+      for (let positionX = initX + 1; positionX <= targetX; ++positionX) {
+        currentX = positionX;
+        movements.push("forward");
+      }
     }
-    console.log(
-      "currentX",
-      currentX,
-      "currentY",
-      currentY,
-      "targetX",
-      targetX,
-      "targetY",
-      targetY
-    );
-
+    if (initX > targetX) {
+      for (let positionX = initX - 1; positionX >= targetX; --positionX) {
+        currentX = positionX;
+        movements.push("forward");
+      }
+    }
     let newDirection = this.defineDirectionToTarget(
       currentX,
       currentY,
       targetX,
       targetY
     );
-    console.log("newDirection", newDirection);
-
     movements = [
       ...movements,
       ...this.defineTurns(newDirection, currentDirection),
     ];
-
-    for (let positionY = initY + 1; positionY <= targetY; ++positionY) {
-      currentY = positionY;
-      movements.push("forward");
+    if (initY < targetY) {
+      for (let positionY = initY + 1; positionY <= targetY; ++positionY) {
+        currentY = positionY;
+        movements.push("forward");
+      }
     }
-    console.log(
-      "currentX",
-      currentX,
-      "currentY",
-      currentY,
-      "targetX",
-      targetX,
-      "targetY",
-      targetY
-    );
-
+    if (initY > targetY) {
+      for (let positionY = initY - 1; positionY >= targetY; --positionY) {
+        currentY = positionY;
+        movements.push("forward");
+      }
+    }
     return movements;
   }
   public getDirection(
@@ -88,8 +76,6 @@ export class Rover {
       targetX,
       targetY
     );
-    console.log("TargetDirection in getDirection", TargetDirection);
-
     return this.defineTurns(TargetDirection, currentNumericDirection);
   }
   private defineTurns(
