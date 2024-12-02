@@ -1,5 +1,5 @@
 export class Cell {
   calculateNeighbours(initialNeighboursState: number[]) {
-    return 4;
+    return initialNeighboursState.filter((state) => state).length;
   }
 }
