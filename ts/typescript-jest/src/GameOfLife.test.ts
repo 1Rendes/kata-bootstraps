@@ -36,19 +36,53 @@ describe("Game of life", () => {
   });
   it("cell become dead if 1 neighbour is alive", () => {
     const initialNeighboursState = [0, 1, 0, 0, 0, 0, 0, 0];
+    const initialCellState = 1;
     const expectedCellState = 0;
 
     const cell = new Cell();
-    const cellState = cell.defineState(initialNeighboursState);
+    const cellState = cell.defineState(
+      initialNeighboursState,
+      initialCellState
+    );
 
     expect(cellState).toBe(expectedCellState);
   });
-  it("cell become dead if 2 neighbour is alive", () => {
+  it("cell survive if 2 neighbours is alive", () => {
     const initialNeighboursState = [0, 1, 1, 0, 0, 0, 0, 0];
+    const initialCellState = 1;
     const expectedCellState = 1;
 
     const cell = new Cell();
-    const cellState = cell.defineState(initialNeighboursState);
+    const cellState = cell.defineState(
+      initialNeighboursState,
+      initialCellState
+    );
+
+    expect(cellState).toBe(expectedCellState);
+  });
+  it("cell become alive if 3 neighbours is alive", () => {
+    const initialNeighboursState = [0, 1, 1, 1, 0, 0, 0, 0];
+    const initialCellState = 0;
+    const expectedCellState = 1;
+
+    const cell = new Cell();
+    const cellState = cell.defineState(
+      initialNeighboursState,
+      initialCellState
+    );
+
+    expect(cellState).toBe(expectedCellState);
+  });
+  it("cell become dead if 4 neighbours is alive", () => {
+    const initialNeighboursState = [0, 1, 1, 1, 1, 0, 0, 0];
+    const initialCellState = 1;
+    const expectedCellState = 0;
+
+    const cell = new Cell();
+    const cellState = cell.defineState(
+      initialNeighboursState,
+      initialCellState
+    );
 
     expect(cellState).toBe(expectedCellState);
   });
